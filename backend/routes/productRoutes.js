@@ -1,13 +1,14 @@
 import express from 'express';
 import { createProduct, deleteProduct, getProducts, updateProduct } from '../controllers/productController.js';
 import authMiddleware from '../middlewares/authMiddleware.js';
+import upload from '../middlewares/multer.js';
 
 
 const productRoutes = express.Router();
 
 // POST /api/admin/login
 productRoutes.get('/', authMiddleware, getProducts);
-productRoutes.post('/', authMiddleware, createProduct);
+productRoutes.post('/', authMiddleware,upload.single("image"), createProduct);
 productRoutes.put('/:id', authMiddleware, updateProduct);
 productRoutes.delete('/:id', authMiddleware, deleteProduct);
 

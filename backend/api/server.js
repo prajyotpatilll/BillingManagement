@@ -6,6 +6,7 @@ import connectDB from '../config/db.js';
 import adminRoutes from '../routes/adminRoutes.js';
 import productRoutes from '../routes/productRoutes.js';
 import orderRoutes from '../routes/orderRoutes.js';
+import connectCloudinary from '../config/cloudinery.js';
 
 
 
@@ -14,6 +15,7 @@ dotenv.config();
 
 // Connect to MongoDB
 connectDB();
+connectCloudinary()
 
 // Initialize express app
 const app = express();

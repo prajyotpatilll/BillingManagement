@@ -10,13 +10,13 @@ export const loginAdmin = async (req, res) => {
     // Find admin by username
     const admin = await Admin.findOne({ username });
     if (!admin) {
-      return res.status(400).json({ message: 'Invalid username or password' });
+      return res.json({success: false, message: 'Invalid username' });
     }
 
     // Compare passwords
     const isMatch = await bcrypt.compare(password, admin.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid username or password' });
+      return res.json({success: false, message: 'Invalid username or password' });
     }
 
     // Generate JWT token
@@ -33,6 +33,6 @@ export const loginAdmin = async (req, res) => {
     });
   } catch (error) {
     console.error('Admin login error:', error.message);
-    res.status(500).json({ message: 'Server error' });
+    res.json({success: false, message: error.message });
   }
 };

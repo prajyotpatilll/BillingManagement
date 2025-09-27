@@ -5,10 +5,10 @@ import Order from "../models/order.js";
 export const getOrders = async (req, res) => {
   try {
     const orders = await Order.find().populate('products.product', 'name price');
-    res.json(orders);
+    res.json({success: true, message: 'Orders fetched successfully', orders });
   } catch (error) {
     console.error('Get orders error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({success: false, message: error.message });
   }
 };
 
@@ -17,11 +17,11 @@ export const getOrderById = async (req, res) => {
   const { id } = req.params;
   try {
     const order = await Order.findById(id).populate('products.product', 'name price');
-    if (!order) return res.status(404).json({ message: 'Order not found' });
-    res.json(order);
+    if (!order) return res.json({ message: 'Order not found' });
+    res.json({success: true, message: 'Order fetched successfully', order });
   } catch (error) {
     console.error('Get order error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({success: false, message: error.message });
   }
 };
 
@@ -30,7 +30,7 @@ export const createOrder = async (req, res) => {
   const { products, totalAmount, status } = req.body;
 
   if (!products || products.length === 0 || !totalAmount) {
-    return res.status(400).json({ message: 'Products and totalAmount are required' });
+    return res.json({success: false, message: 'Invalid order data' });
   }
 
   try {
@@ -41,10 +41,10 @@ export const createOrder = async (req, res) => {
       createdAt: new Date(),
     });
     const savedOrder = await newOrder.save();
-    res.status(201).json(savedOrder);
+    res.json({success: true, message: 'Order created successfully', savedOrder });
   } catch (error) {
     console.error('Create order error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({success: false, message: error.message });
   }
 };
 
@@ -54,7 +54,7 @@ export const updateOrderStatus = async (req, res) => {
   const { status } = req.body;
 
   if (!status) {
-    return res.status(400).json({ message: 'Status is required' });
+    return res.json({ message: 'Status is required', success: false });
   }
 
   try {
@@ -63,11 +63,11 @@ export const updateOrderStatus = async (req, res) => {
       { status },
       { new: true }
     );
-    if (!updatedOrder) return res.status(404).json({ message: 'Order not found' });
-    res.json(updatedOrder);
+    if (!updatedOrder) return res.json({ message: 'Order not found', success: false });
+    res.json({updatedOrder, success: true, message: 'Order status updated successfully' });
   } catch (error) {
     console.error('Update order status error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({ message: 'Server error', success: false });
   }
 };
 
@@ -77,10 +77,10 @@ export const deleteOrder = async (req, res) => {
 
   try {
     const deletedOrder = await Order.findByIdAndDelete(id);
-    if (!deletedOrder) return res.status(404).json({ message: 'Order not found' });
-    res.json({ message: 'Order deleted successfully' });
+    if (!deletedOrder) return res.json({ message: 'Order not found',success: false });
+    res.json({success: true, message: 'Order deleted successfully' });
   } catch (error) {
     console.error('Delete order error:', error);
-    res.status(500).json({ message: 'Server error' });
+    res.json({success: false, message: error.message });
   }
 };
