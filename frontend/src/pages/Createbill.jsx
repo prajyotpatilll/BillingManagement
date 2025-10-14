@@ -1,10 +1,56 @@
 import React, { useState } from "react";
 
 const products = [
-  { id: "66fe41c2d1d8a3f90b345a11", name: "Espresso", price: 2.5, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDd-EyrmvX4-RzpF0clUl3GtvyurRoRpc2E7wVnrrKPhQsTJwTXbKoRYBrbnSVI-Z2t-G-seH_NzRRkO5H7zd1K1hmIPsSsv6h1a2XGdRP60SJFH4Refs6Oi_mWIxWZ2Rv10KC_EkMCEfIbAiOQ-1CNyizmVRJ895mOZ5OHgAIi_jbjYh4Th6vdSDbYdsCTM5JFQF1HFKgsy9fPm8qTR_R_elMWS5A7vhLlJs_JT_P6gZtuHEuWxd5d0TA8_cNh9I8vAafQzFfY8bE" },
-  { id: "66fe41c2d1d8a3f90b345a12", name: "Cappuccino", price: 3.5, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAVIw1m9qRAt88GCwS77Bnt3ph2UGjwv7mLoGrnuxIq7xYJXCwyql-KdUb1pseouPXfjtBfI7DdgmdE-GU5L0IAfUlIoLFMCXup9G_RgNdTEDm4XEzvvV8i8z8q5qwhlLYWnuLL6AvoMSGegsVI5gy8yBukLgDImDdYMh6qg4NPtrsZ8xl9Y0apcmZYT1ugVwKKplPVTePCnl24daT8GbnRkZ4SuL2VFrudGBd90-rT6oR7_tdf8k13DFdQCoRHtp40WgpPUG4ufCI" },
-  { id: "66fe41c2d1d8a3f90b345a13", name: "Latte", price: 4.0, img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBtWWS8l2t_9dNRw04pjQG4pKqlNhPlbRnYoN3T7F0GUnMw5QlgCU7M8teLrh3Iulp9APUxeCNZqv-Mxc1xpLPcchfucMTSyBoCB6zVNDQW6kip3foejkawBJUb-U9oM3ChOwtbc-5I1AwTmds_jmd1WSHt9EPKOc7j1VnIcftf11DojYRsD5COBgYOKciP9_caLiBaLxsZRedYSndi-A5kHtIcO0Xt5QmuM7cYoMTbXEls3imipnOubb-ALtZ-3o8cRuni9TvzQYs" },
+  { 
+    id: "66fe41c2d1d8a3f90b345a11", 
+    name: "Espresso", 
+    price: 2.5, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDd-EyrmvX4-RzpF0clUl3GtvyurRoRpc2E7wVnrrKPhQsTJwTXbKoRYBrbnSVI-Z2t-G-seH_NzRRkO5H7zd1K1hmIPsSsv6h1a2XGdRP60SJFH4Refs6Oi_mWIxWZ2Rv10KC_EkMCEfIbAiOQ-1CNyizmVRJ895mOZ5OHgAIi_jbjYh4Th6vdSDbYdsCTM5JFQF1HFKgsy9fPm8qTR_R_elMWS5A7vhLlJs_JT_P6gZtuHEuWxd5d0TA8_cNh9I8vAafQzFfY8bE" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a12", 
+    name: "Cappuccino", 
+    price: 3.5, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAVIw1m9qRAt88GCwS77Bnt3ph2UGjwv7mLoGrnuxIq7xYJXCwyql-KdUb1pseouPXfjtBfI7DdgmdE-GU5L0IAfUlIoLFMCXup9G_RgNdTEDm4XEzvvV8i8z8q5qwhlLYWnuLL6AvoMSGegsVI5gy8yBukLgDImDdYMh6qg4NPtrsZ8xl9Y0apcmZYT1ugVwKKplPVTePCnl24daT8GbnRkZ4SuL2VFrudGBd90-rT6oR7_tdf8k13DFdQCoRHtp40WgpPUG4ufCI" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a13", 
+    name: "Latte", 
+    price: 4.0, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBtWWS8l2t_9dNRw04pjQG4pKqlNhPlbRnYoN3T7F0GUnMw5QlgCU7M8teLrh3Iulp9APUxeCNZqv-Mxc1xpLPcchfucMTSyBoCB6zVNDQW6kip3foejkawBJUb-U9oM3ChOwtbc-5I1AwTmds_jmd1WSHt9EPKOc7j1VnIcftf11DojYRsD5COBgYOKciP9_caLiBaLxsZRedYSndi-A5kHtIcO0Xt5QmuM7cYoMTbXEls3imipnOubb-ALtZ-3o8cRuni9TvzQYs" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a14", 
+    name: "Croissant", 
+    price: 2.75, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCIHO0bqAi-ZxS7cL1jd3o9YXzM2yQ8YRBffjsVdmDRU3Ncyj75DRJcJNtw7qLacQS7Ep9NXCfgXrMdDouDCla-XQuSLPvMOYnaIUupLXyvujKSOYNyYP5Wmj4f01iLOJUTkPxuOBfCwRLU3JeeuYEuFgDX4WmVuuHyfaoXMtdIJT7AHSU4Y9Csb7L02J5cA1SkliKXOwYO2Y2Om38Q3yZ7z5cv-PlKkW4_dLdyUu58R4Se-tL0R1XDL9f2EHfqkHC4hlCeiVe8pqA" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a15", 
+    name: "Muffin", 
+    price: 3.0, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuA3slRc5J9jqz2XtTwtcdothF3SMNinN7sByMHAgNTuNfIIDNDzHIeg8wxA6p0cS4LHmkewgqj0rnc2dpMqDNmZ4rf9TDk4qKH_jznYOL154zJ1IgccTZb0bL5O09fFl07jLKfs7RP0fEQ1JTwjJHRL8GQ-66kfMFsmMna0HcUychN4tuu3DIkT1F04P9l13-ws8gjEuj4QStJ26JQhtIV-A2t-6cIMcnt0Fcd729Po981l-4qG_qjrN1eyNCeVDoQfSapbfPdIXoY" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a16", 
+    name: "Iced Coffee", 
+    price: 3.75, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDtC_rnQpAykW6AZZQbpoA47j7l3iSNnbHthzx4TLhdx2Qx2N2r6UQY8EVuttWPB0irkrPn02QfWpHwxzRhFtbVCcNvcMHUDgRfnCVQTZ9bVVndZXFNZZocsIbibUs2z6es6gKoZOy_zcgLaHT0mVdnWaiJfUmVs8Rcxbf86ZpCKRZG1m5W8IHEki9MkFPKog1n7dnx-iQlByh1gMsBvwVDzfDbE0kaI1CHYqT5qnbf7SL1AdifiS_FC9QnYy5r3OJZ_vxfiDdthSU" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a17", 
+    name: "Brownie", 
+    price: 3.25, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD8-CIPJm1pW-JMcaTx_jD6nmMLvl67tBbbBoXAJ1TB6szKRJQlGj7j46_beez9rSMOQzOaiOFOISbBzOPybpBRbLEMDCOU4rsJ0hQ2TCS0Z8c57rt6l6uioQW49BNutF_git4Z7qK3r22HIiBdkUjOUNRWXzaHd19bB4NsJMKNOD797uTEc5m76NM0MLOmNtk-jk8Jb-8DXZhdDC34ZOEKQsYE7aOx0-KYc325rLAUG3ftgrkjOOu367xaCC4xsRqcxrILc9E7LXU" 
+  },
+  { 
+    id: "66fe41c2d1d8a3f90b345a18", 
+    name: "Americano", 
+    price: 3.0, 
+    img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDH8xo9eQXR3O2HegD5czlvryWwZv0XNOCvHq9Gc3y-YyGXPlDzqEpkPKfcLw3kzh7FMae1erubgbVaSNwX1YDcmU0yXoiXCyBnz6EaLRGSVg_Mtred7KPfyCGLi3iTfSqkEmBUk37GGLzKIbJMPFvEMYHaN2AGARCZSpdkbz_lMY7Oc2sdFEnhEJ0wAIQYsK5PLAl30cDsHz4D98cVVgoaTDgAtwZDjf0WWwPstjNhYWqQZFGbOOFV8IzXAhseQ-5MpymYkAm5U7Y" 
+  }
 ];
+
 
 const CreateBill = () => {
   const [bill, setBill] = useState([]);
@@ -29,7 +75,7 @@ const CreateBill = () => {
     setBill((prev) =>
       prev
         .map((item) =>
-          item.id === id ? { ...item, qty: Math.max(item.qty - 1, 1) } : item
+          item.id === id ? { ...item, qty: Math.max(item.qty - 1, 0) } : item
         )
         .filter((item) => item.qty > 0)
     );
@@ -80,7 +126,7 @@ const CreateBill = () => {
                           e.stopPropagation();
                           decreaseQty(product.id);
                         }}
-                        className="p-2 text-content-light dark:text-content-dark hover:text-primary"
+                        className="text-3xl p-1 font-bold text-content-light dark:text-content-dark hover:text-primary cursor-pointer"
                       >
                         -
                       </button>
@@ -90,7 +136,7 @@ const CreateBill = () => {
                           e.stopPropagation();
                           increaseQty(product.id);
                         }}
-                        className="p-2 text-content-light dark:text-content-dark hover:text-primary"
+                        className="text-3xl p-1 font-bold text-content-light dark:text-content-dark hover:text-primary cursor-pointer"
                       >
                         +
                       </button>
@@ -100,7 +146,7 @@ const CreateBill = () => {
 
                 <div className="p-4">
                   <h3 className="font-bold text-lg">{product.name}</h3>
-                  <p className="text-primary font-semibold">${product.price.toFixed(2)}</p>
+                  <p className="text-primary font-semibold">Rs {product.price.toFixed(2)}</p>
                 </div>
               </div>
             );
