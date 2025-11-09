@@ -29,6 +29,9 @@ const AppContextProvider = (props) => {
     }
   };
 
+  useEffect(() => {
+    getproducts();
+  }, []);
   
 
   const value = {

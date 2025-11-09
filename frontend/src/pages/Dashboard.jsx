@@ -14,7 +14,7 @@ const Dashboard = () => {
         <div onClick={() => navigate("/createbill")} className='cursor-pointer'>
           Create Bill
         </div>
-        <div onClick={() => navigate("/admin")} className='cursor-pointer'>
+        <div onClick={() => navigate("/admin/dash")} className='cursor-pointer'>
           Admin Panel
         </div>
       </div>

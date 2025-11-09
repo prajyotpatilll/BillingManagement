@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import Login from './pages/Login'
@@ -6,8 +6,10 @@ import Dashboard from './pages/Dashboard'
 import Products from './pages/Products'
 import Adminpannel from './pages/Adminpannel'
 import Createbill from './pages/Createbill'
+import { AppContext } from './context/AppContext'
 
 const App = () => {
+  const {token} = useContext(AppContext);
   return (
     <div>
       <ToastContainer/>
